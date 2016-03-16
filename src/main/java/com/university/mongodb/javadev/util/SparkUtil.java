@@ -1,7 +1,8 @@
 package com.university.mongodb.javadev.util;
 
+import spark.Request;
+import spark.Response;
 import spark.Route;
-import spark.Spark;
 
 import java.util.Map;
 
@@ -16,14 +17,19 @@ public class SparkUtil {
     }
 
 
-    public static Route renderOrHalt(String templatePath, Map<String, ?> params) {
+    public static Route renderOrHalt(final String routePath,
+                                     final String templatePath,
+                                     final Map<String, ?> params) {
 
-        return (request, response) -> {
-            try {
-                return RENDERER.render(templatePath, params);
-            } catch (Exception ex) {
-                Spark.halt(500);
-                return null;
+        return new Route(routePath) {
+            @Override
+            public Object handle(Request request, Response response) {
+                try {
+                    return RENDERER.render(templatePath, params);
+                } catch (Exception ex) {
+                    halt(500);
+                    return null;
+                }
             }
         };
     }
