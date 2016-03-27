@@ -1,4 +1,4 @@
-package com.university.mongodb.javadev.spark;
+package com.university.mongodb.javadev.w1.spark;
 
 import com.google.common.collect.ImmutableMap;
 import com.university.mongodb.javadev.util.SparkUtil;
@@ -12,12 +12,12 @@ import java.util.Arrays;
 public class SparkTestApp {
 
     public static void main(String[] args) throws Exception {
-        Spark.get(SparkUtil.renderOrHalt("/", "testapp/hello.ftl", ImmutableMap.of("name", "Vadim")));
+        Spark.get(SparkUtil.renderOrHalt("/", "w1/spark/hello.ftl", ImmutableMap.of("name", "Vadim")));
 
         Spark.get(
                 SparkUtil.renderOrHalt(
                         "/fruits",
-                        "testapp/fruitsPicker.ftl",
+                        "w1/spark/fruitsPicker.ftl",
                         ImmutableMap.of("fruits", Arrays.asList("orange", "banana", "apple"))));
 
         Spark.post(new Route("/favorite_fruit") {
