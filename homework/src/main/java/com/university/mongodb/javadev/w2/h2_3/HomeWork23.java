@@ -22,7 +22,6 @@ public class HomeWork23 {
         MongoClient client = new MongoClient("127.0.0.1:27017", clientOptions);
         MongoDatabase students = client.getDatabase("students");
 
-        List<Document> gradesToDelete = new ArrayList<>();
         MongoCollection<Document> gradesCollection = students.getCollection("grades");
         Bson sorting = Sorts.ascending("student_id", "score");
         int lastStudentId = -1;
