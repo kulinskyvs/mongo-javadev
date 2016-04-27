@@ -32,7 +32,7 @@
         <em>Filed Under</em>:
         <#if post["tags"]??>
             <#list post["tags"] as tag>
-                 ${tag}
+                <a href="/tag/${tag}">${tag}</a>
             </#list>
         </#if>
 
